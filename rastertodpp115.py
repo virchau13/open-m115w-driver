@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# Printers.
-# WHY?
 
 from collections import namedtuple
 from datetime import datetime
@@ -12,8 +10,6 @@ if len(sys.argv) < 7 or len(sys.argv) > 8:
     sys.stderr.buffer.write(b'Usage: rastertodpp115 <job-id> <username> <title> <num-copies> <options> [file]')
     sys.exit(1)
 
-
-### copied from https://behind.pretix.eu/2018/01/20/cups-driver/ from here on <-->
 CupsRas3 = namedtuple(
     # Documentation at https://www.cups.org/doc/spec-raster.html
     'CupsRas3',
@@ -65,8 +61,6 @@ def read_ras3(rdata):
         rdata = rdata[1796 + (header.cupsWidth * header.cupsHeight * header.cupsBitsPerPixel // 8):]
 
     return pages
-
-### end most of the copying </-->
 
 pages = read_ras3(sys.stdin.buffer.read())
 
